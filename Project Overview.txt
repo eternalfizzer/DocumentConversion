@@ -1,0 +1,36 @@
+
+Overview - 
+
+You will find 4 documents in this folder:
+
+1. Information Security Policy - Template.docx
+2. Acceptable Use Policy - Template.docx
+3. Needs Assessment Results - Template.docx
+4. Needs Assessment Results - Completed - Sample
+
+The first three documents are to be converted.  The last sample document is the Needs Assessment Results in a completed form for reference.
+
+
+
+Background - 
+
+As they exist today, we work with these documents programmatically.  In Word, we deconstruct the document to it’s XML parts, make the changes we need and then reassemble as a Word Document.  
+
+This is problematic - as it is difficult, it involves a lot of steps and it’s imprecise.
+
+We’d like to move these to PDF, and thus are exploring a LaTeX conversion. 
+
+
+Project details -
+
+We have a server that takes input of several variables, opens a .Tex file, replaces a sample string denoted by <<field>> with the value of the input variables and returns a completed document.
+
+This project will work to develop .Tex files for the three documents attached.
+
+While there is some formatting to the documents right now, this does not have to be copied exactly within the finished product.  What I’m looking for is a stylistically consistent format for the two attached policies, and one for the Needs Assessment Results document.
+
+I have attached a completed Needs Assessment Results document as it exists today for comparison.  Two items that make this more complicated are that we’re generating a Bar Chart dynamically as well as including several bullet pointed lists of recommendations.  We can generate the values on the chart as well as create the lists dynamically, but will need placeholders for them in the document.
+
+I?m happy to answer any questions you may have.
+
+
