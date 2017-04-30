@@ -1,0 +1,25 @@
+Scope of work:
+
+Create 2 LaTeX class files to handle the respective policy and assessment report inputs automatically and define their styles.
+Create generic report tex files for the 3 reports based on these classes with placeholders for missing elements.
+Document the procedure for compiling each report programmatically by replacing key text like <<field>> in the tex file.
+
+Questions:
+1. Can your process export the chart as a file with a particular name (like 'Chart.png')?
+2. Can your lists of recommendations use a delimiter, say, the pipe symbol '|', between items?
+3. Let me know what level of documentation you need - are you comfortable with LaTeX or is this all a new approach?
+e.g., is the following too pedantic or is it obscure?
+
+Good practice is to use a header file with all the pre-defined inputs (that your server can edit), like
+% Needs Assessment header.tex
+  ...
+% Focus Area 1 fields
+\Area1RiskLevel{<<Area1RiskLevel>>}
+\Area1Score{<<Area1Score>>}
+\Area1Recom{<<Area1Recommendations>>}
+etc.
+
+(Each of these fields is defined in the class file, with a default value (usually blank), so the report will still generate.)
+
+Then the master tex file simply includes the header file and runs the report (based on the class).
+
