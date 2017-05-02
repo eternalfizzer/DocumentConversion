@@ -1,0 +1,187 @@
+%% minimum working case to develop policy class
+% identify generic fields
+
+%% QUESTIONS
+% why is (most of) exec summary on title page *and* in body?
+
+%\documentclass[12pt]{article}
+\documentclass[use]{policy}
+
+% header
+\input{AUPheader.tex} % custom inputs file
+\reporttype{use}
+
+\begin{document}
+	\begin{titlingpage}
+		\maketitle
+		\vspace{3cm}
+		
+		{\fontsize{32}{20} \bfseries \selectfont \lgrey\uppercase{Acceptable Use
+				
+				Policy}\rgrey} 
+		
+		\small [This policy outlines user behaviors that are acceptable for use and are consistent with protecting the information and assets of the \theOrganization.  Access to information resources is a privilege, not a right, and as such implies certain user responsibilities.]
+		
+	\end{titlingpage}
+
+	% page 1
+	\titleline
+
+	\doctable
+	
+%	\vfill
+	
+	\section{Executive Summary}
+	
+		This policy outlines user behaviors that are acceptable for use and are consistent with protecting the information and assets of \theOrganization.  Access to \theOrganization\ information resources is a privilege, not a right, and as such implies certain user responsibilities. Such responsibilities may be defined by \theOrganization\ policies, procedures, standards, federal, state or local laws or other regulations.
+	
+	
+	\section{Purpose and Guiding Principles}
+	
+		The objective of this policy is to outline the appropriate employee and related third party behavior for the protection of \theOrganization\ information and assets. Information Security is a team effort, and to be effective requires the involvement of every member of the organization.
+	
+		Access to \theOrganization\  information and resources are a privilege, not a right.  This policy outlines the acceptable behaviors to protect the organization, its partners and its customers from damaging actions committed either knowing or unwittingly.
+	
+		The Acceptable Use policy applies specifically to the information technology resources of \theOrganization\  such as computers, applications, storage media and network accounts.  Additionally it applies to such resources as email, the World Wide Web, FTP systems and others.  These resources are intended to be used for \theOrganization\  business purposes.  
+		
+		It is the responsibility of every user to familiarize themselves with this policy and its guidelines and to conduct their actions accordingly.
+		
+	
+	\section{Scope}
+	
+		This policy applies to all divisions of \theOrganization\,.  It covers all \theOrganization\ information technology resources, information that is or may be stored in digital form, as well as information and assets that may exist in physical form.  All creation, processing, communication, storage, distribution and disposal of \theOrganization\ information and assets are covered by this policy.  Each employee of \theOrganization\, contractor and other related third parties are bound by the guiding principles, statement of policy and related procedures outlined in this policy. 
+	
+	
+	\section{Statement of Policy}
+	
+		\subsection{Privacy}
+			In accordance with \theOrganization\ policies regarding the use of company resources, users should have no expectation of privacy when using \theOrganization\  information systems resources.  This is notwithstanding the procedures implemented to protect the privacy of individual users.
+		
+		\subsection{Intellectual Works and Copyrights}
+			Users are prohibited from unlawfully obtaining, installing, using, copying, storing or viewing copyright protected material on \theOrganization\  owned information systems resources.  In addition to potential legal issues, the use and dissemination of illegally obtained material increases the threat of malicious code (e.g. viruses, Trojans, etc…) being introduced onto the organization’s network systems. 
+		 
+			Users creating intellectual works using \theOrganization\  information systems resources should be aware that all rights, equities, royalties and other privileges are the sole property of \theOrganization\ .  
+		
+		\subsection{Data Confidentiality}
+			Users are responsible for upholding the confidentiality of \theOrganization\  data.  Users should only access the data needed to perform their job function. Viewing, copying, or destroying any other user’s files without permission is prohibited.
+	
+		\subsection{Data Integrity}
+			Users are responsible for protecting the integrity of \theOrganization\  data.  Modification or alteration of data without explicit permission is prohibited.  Care should be exercised when working with applications that access stored data, that they do not unintentionally modify the stored data.
+	
+		\subsection{Responsible Use of Resources}
+			\theOrganization\  information systems resources are intended to be used for business purposes. This does not preclude the incidental use of company resources for personal use so long as such use meets the following standards
+			
+			\begin{enumerate}[label=\alph*)]
+				\item Use does not create a security risk
+				\item Use does not create any legal risk
+				\item Use does not consume significant computing resources
+				\item Use does not interfere with productivity
+				\item Use does not require the installation of any additional hardware or software
+				\item Use is appropriate for use or viewing within a workplace environment
+			\end{enumerate}
+		
+		\subsection{Network Management}
+			\theOrganization\  IT management is responsible for the planning, installation and maintenance of network resources including, but not limited to network connections, dial-up modem connections and wireless connections.  No hardware is to be added to the network without explicit written approval by IT management.  This includes routers, switches, hubs, modems, wireless access points and other technologies.  
+	
+		\subsection{Personally Owned Systems}
+			Use of personally owned systems is prohibited on the \theOrganization\  network.  Users have a responsibility to protect the confidentiality and integrity of the organization’s data, and as personally owned computing resources cannot be explicitly managed, use is prohibited.  Any exception to this policy must be explicitly approved in writing by management.
+		
+		\subsection{Access Sharing}
+			Users are individually responsible and personally accountable for the use and protection of their user credentials including their username and password.  Passwords and other credentials should not be shared under any circumstances.
+		
+		\subsection{Unauthorized Access}
+			Authorized users may not allow any unauthorized individual the use of \theOrganization\  resources.  This includes the installation or configuration of hardware or software to bypass or disable \theOrganization\  network systems or security features.
+		
+		\subsection{Protection of Information}
+			Users may, as a part of their regular job function, have access to sensitive or privileged information or assets that must be protected.  Upon receiving access to such information, the user must ensure that the information or asset remains protected while in their possession.
+	
+		\subsection{Circumvention of Security Systems}
+			Users are specifically prohibited from attempting to circumvent any application or system’s security features.  Examples of prohibited tools include following:
+			\begin{enumerate}[label=\alph*)]
+				\item Password cracking tools
+				\item Port scanning tools
+				\item Vulnerability scanning tools (may exclude normal operating system features)
+				\item Keyboard logging
+				\item Packet capture tools
+				\item Network Sniffers
+				\item IP Spoofing
+				\item Use of any other user’s account credentials
+			\end{enumerate}
+			
+			The above listed tools are given as examples, and should not be considered to be all inclusive.  Specific exceptions may be granted to IT or network staff for use in analysis or troubleshooting.
+		
+		\subsection{Outside Business}
+			\theOrganization\  computing facilities and network systems may not be used for any outside work, whether compensated or uncompensated, or for the benefit of any organization not related to \theOrganization\ . 
+	
+		\subsection{Use of Email}
+			For purposes of this policy, email includes any electronic messaging involving \theOrganization\  computers, assets and network systems.  This includes messages sent from assigned email accounts, Instant Messenger messages, newsgroup or Usenet postings, text messages, messages sent using handheld devices such as smart phones or Blackberry ™devices.  Email messages may be subject to retention standards or other regulatory guidelines, and as such, may be retained for a period of time even after a user has deleted them from their mailbox.
+			
+			Users are responsible for all activity originating from their email accounts.  The user should choose an appropriately strong password and should never share this password with others.
+			
+			Users should be aware that their use of email may be monitored.  Additionally, the unauthorized use or access of any mailbox other than one’s own is strictly prohibited.
+			
+			Users should use \theOrganization\  email for business purposes only.  Any vulgar or inappropriate language in email should be avoided.  Users may be held liable for information that they disseminate inappropriately via email.
+			
+			Users may not use \theOrganization\  email systems for any of the following:
+			\begin{enumerate}[label=\alph*)]
+				\item Chain mail
+				\item Hate mail or any abusive or harassing content
+				\item Virus Hoaxes
+				\item Sending or forwarding Spam or other Junk mail
+				\item Email that is not related to \theOrganization\  business
+				\item Transmission of any sensitive information such as names, social security numbers, and account numbers, etc…
+			\end{enumerate}
+		
+			The above items should be considered to be examples and are not exhaustive.  The user should use good judgment in the use of email.  In the event of a question, the user should contact their supervisor for clarification.
+		
+		\subsection{Litigation}
+			In the event of litigation, users should be aware that all information resources are subject to discovery under federal and state rules of evidence.  This includes, but is not limited to workstations, servers, laptops, cell phones, pagers, printers, home computers and any other electronic equipment that is used as a part of \theOrganization\  business.  Use of information systems that contain subpoenaed information is subject to special procedures, and is to be done only under the guidance of counsel.  Any attempt to alter or destroy evidence or subpoenaed information may subject the user to civil and criminal penalties and may result in immediate termination.
+		
+	
+	\section{Procedures}
+	
+	Within this Section, the phrases “must” and “recommended” have specific meanings where highlighted in boldface. If a department correctly adheres to the guidelines given as “must”, then it can be considered as meeting the requirements for this policy. If they also adhere to the guidelines given as “recommended”, then they can be considered to be meeting the minimum requirements to be in accordance with generally accepted information security practices.
+	
+	\begin{enumerate}[label=\Alph*.]
+		\item All use of \theOrganization\  information resources must be in compliance with the Information Security Policy and Data Handling Policy
+		\item All users must be authenticated by a user ID and password or other reliable means.
+		\item Users must select strong passwords and change their passwords on a regular basis.
+		\item Users must not share their username and/or password with any other user under any circumstances
+		\item Creation of documents or other data must be in compliance with the Data Handling Policy.
+		\item Users must take appropriate means to protect \theOrganization\  information and assets from physical or environmental harm.  This includes storing sensitive files in locked cabinet or drawers, using cable locks or other means to protect laptops and other mobile assets and the use of controlled-access areas for file and application servers.
+		\item Users must ensure that anti-virus software on their systems is kept up-to-date and running appropriately.  An IT administrator must be notified as soon as possible should a problem arise.
+	 	\item In the event that a virus outbreak is found or expected, users must cease use of the affected system and report the incident to an IT administrator or their supervisor as quickly as possible.
+		\item In the event of a security breach or suspected security breach, users must report the incident to their supervisor as quickly as possible.  Users must not try to investigate or remediate the problem on their own.
+		\item Remote access to \theOrganization\  network systems must be made via approved means.  In no case may unapproved modems, wireless networks, or other non-approved network access devices be used to attempt to access the network.
+	\end{enumerate}
+	
+	
+	\section{Roles and Responsibilities}
+	
+		Each user of \theOrganization\ ’s information and assets is responsible for familiarizing themselves with the contents of this policy and modeling their actions accordingly.  Any user of the organization’s information or assets is responsible for abiding by this policy, whether they are an employee, contractor, vendor or other related third party.
+	
+		Additionally, users are responsible for exercising good judgment regarding the use of \theOrganization\  information and assets.  In cases where appropriate use is in question, users are responsible for immediately contacting their supervisor for resolution.
+	
+		Users are responsible for immediately reporting any security breaches, incidents or perceived security weaknesses.  In the event of a breach or suspected breach, every second is critical and as such, users should err on the side of caution and contact their supervisor immediately.  
+
+	
+	\section{Compliance}
+
+		Any person who uses \theOrganization\ ’s information or assets consents to all provisions of this policy and agrees to comply with all of its terms and conditions, as well as with relevant state and federal laws and regulations.  Users have a responsibility to use these resources in an effective, ethical and lawful manner.  Any violation of this policy may result in disciplinary or administrative sanctions including loss of privileges, monitoring of use and up to and including termination depending on the severity and intent of offense.  Additionally, non-compliance with this policy resulting in loss or disclosure of data may result in personal civil and/or criminal liability.
+
+	\nobreaksection{Policy Modifications}
+	
+		This policy may be changed by \theOrganization\  Senior Management at any time, but typically will be modified in response to newly identified threats or risks.  Changes to this policy will be communicated and distributed to all affected parties.  Most major changes to the policy will be made during official policy review sessions on an annual basis, but if required a policy review session may be convened on a special basis.
+	
+	\nobreaksection{Communication}
+	
+		Upon approval, this policy is to be distributed to all \theOrganization\  employees, contractors, vendors and related third parties.  Upon subsequent revisions, updates or amendments to this policy affected individuals will be notified of the change along with an office or individual to whom they can direct additional questions.
+	
+	
+	\section{Acknowledgement of Understanding}
+		I have been provided with a copy of the \theOrganization\  Acceptable Use Policy and have read and reviewed the policy.  I have been provided the opportunity to ask questions about the policy and am aware of resources to which I may look for more information.  I understand that it is my responsibility to comply with the provisions of the policy and that failure to do so is subject to disciplinary action up to and including immediate termination.  My signature below indicates that I have been provided with and have read the \theOrganization\  Acceptable Use Policy and furthermore indicates my understanding and willingness to comply with the provisions of the policy.
+	
+		\signblock
+			
+
+\end{document}
