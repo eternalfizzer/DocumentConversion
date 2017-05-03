@@ -1,24 +1,16 @@
-%% minimum working case to develop policy class
-% identify generic fields
+%% master tex file for generating Acceptable Use Policy
+% Renee Boileau for Bryan Thornton
+% last updated 2017-05-03
 
-%% QUESTIONS
-% why is (most of) exec summary on title page *and* in body?
+% *** Edit inputs in header.tex only ***
 
-%\documentclass[12pt]{article}
 \documentclass[use]{policy}
 
-% header
-\input{AUPheader.tex} % custom inputs file
-\reporttype{use}
+\input{header.tex} % custom inputs file
 
 \begin{document}
 	\begin{titlingpage}
 		\maketitle
-		\vspace{3cm}
-		
-		{\fontsize{32}{20} \bfseries \selectfont \lgrey\uppercase{Acceptable Use
-				
-				Policy}\rgrey} 
 		
 		\small [This policy outlines user behaviors that are acceptable for use and are consistent with protecting the information and assets of the \theOrganization.  Access to information resources is a privilege, not a right, and as such implies certain user responsibilities.]
 		

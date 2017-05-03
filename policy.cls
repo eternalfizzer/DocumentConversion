@@ -1,16 +1,13 @@
 %% policy class
 % initializes fields for Acceptable Use Policy and Information Security Policy
-% generates title pages
-% ...
+% generates content Title Page and Document Information Page and signature block
 
 %% Questions
 % Revision or Version?
 % policy def: use orgname vs "Organization"
-% *** Validation? dates
-% justified?
-
-%% To Do:
-% Status table
+% Add input validation? dates
+% justified or ragged?
+% Status table?
 
 \def\fileversion{0.1}
 \def\filedate{2017/05/02}
@@ -36,8 +33,8 @@
 \RequirePackage{hyperref} % for hypertext links in the PDF; should be at end of all packages (see docs)
 
 % define policy name
-\DeclareOption{sec}{\newcommand\rb@policyname{Information Security}}
-\DeclareOption{use}{\newcommand\rb@policyname{Acceptable Use}}
+\DeclareOption{sec}{\newcommand\rb@policyname{Information Security} \newcommand\upperpolicyname{\uppercase{Information Security}}}
+\DeclareOption{use}{\newcommand\rb@policyname{Acceptable Use} \newcommand\upperpolicyname{\uppercase{Acceptable Use}}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -59,14 +56,7 @@
 \author{\@orgname}
 \newcommand{\theOrganization}{\makeatletter \emph \@author \makeatother}
 
-% set report type: default [sec] or use
-\newcommand{\rb@reporttype}{sec} % default Information Security Policy
-\newcommand\reporttype[1]{%
-	\renewcommand\rb@reporttype{#1}
-	}
-
-% set report name based on type
-% TO DO choose type
+% set report title based on policy name
 \title{\rb@policyname\ Policy}
 
 % set document management information
@@ -140,24 +130,29 @@
 		& \huge \color{grey}{\bfseries\@author} \\ [1.2ex]
 		& \color{grey}{Copyright \textcopyright 2017 Net Reaction, LLC}  \normalsize
 	\end{tabular}
-%	\restoregeometry
-} % end \maketitle
+
+	\vspace{3cm}
+		
+	{\fontsize{32}{20} \bfseries \selectfont \lgrey\uppercase{\upperpolicyname
+				
+		Policy}\rgrey} 
+
+	} % end \maketitle
 
 % title brackets
 \newcommand{\lgrey}{{\color{grey}\lbrack}}
 \newcommand{\rgrey}{{\color{grey}\rbrack}}
 
+%% Document Information Page
 % title at top of page 1
 \newcommand{\titleline}{%
-		\vspace{-.5cm}
-		\Huge \color{slate}{\bfseries{\thetitle}} \color{black}\normalsize \normalfont
-	}
+	\vspace{-.5cm}
+	\Huge \color{slate}{\bfseries{\thetitle}} \color{black}\normalsize \normalfont
+	} % end \titleline
 
 %% Document table
-%\newcommand{\fw}{{\extracolsep{\fill}}}
 \newcommand{\doctable}{%
 	\renewcommand{\arraystretch}{1.5}
-%	\begin{tabular*}{1.\linewidth}{ @\fw llll}
 	\begin{tabular*}{1.\textwidth}{ll@{\extracolsep{\fill}}ll}
 		\toprule
 		Policy Number: & \rb@policynum & Version: & \rb@vernum \\
