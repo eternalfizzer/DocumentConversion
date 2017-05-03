@@ -10,8 +10,6 @@
 % justified?
 
 %% To Do:
-% if statements for policy strings
-% color title
 % Status table
 
 \def\fileversion{0.1}
@@ -20,7 +18,7 @@
 	Document Class: policy \filedate \space v\fileversion \space (R. Boileau)}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sample}[2017/04/30 Sample LaTeX class]
+\ProvidesClass{policy}[2017/05/02 policy LaTeX class]
 
 \LoadClass[10pt]{article}
 
