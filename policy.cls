@@ -2,46 +2,67 @@
 % initializes fields for Acceptable Use Policy and Information Security Policy
 % generates content Title Page and Document Information Page and signature block
 
-%% Questions
-% Revision or Version?
-% policy def: use orgname vs "Organization"
-% Add input validation? dates
-% justified or ragged?
-% Status table?
+% REBUILDING
+\def\fileversion{0.3}
+\def\filedate{2017/05/04}
+%% Changes:
+% terminology: Revision or Version? Version
+% Status displays value only (no table)
+% removed Executive Summary from title page
+% put organization name top of page
 
-\def\fileversion{0.1}
-\def\filedate{2017/05/02}
+%% TO DO
+% add option for company logo in header
+% change to raggedright (use ragged2e package)
+
 \typeout{%
 	Document Class: policy \filedate \space v\fileversion \space (R. Boileau)}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{policy}[2017/05/02 policy LaTeX class]
+\ProvidesClass{policy}[2017/05/04 policy LaTeX class]
 
-\LoadClass[10pt]{article}
+\LoadClass{article}
 
-\RequirePackage{fancyhdr} % for the fancy headers and footers
-\RequirePackage{graphicx} % used for all of the graphics
-\RequirePackage{changepage}   % change page layout on the fly, this is "the BOMB"! (or use geometry below)
+%\RequirePackage{graphicx} % used in case of graphics
 \RequirePackage[table]{xcolor}
 \RequirePackage{booktabs}
-\RequirePackage[letterpaper,left=1.25in,top=1.25in,right=1.25in,bottom=1.25in]{geometry}
+\RequirePackage[letterpaper, left = 1.25in, right = 1.25in, top = 1.25in, bottom = 1.25in]{geometry}
+\RequirePackage{fancyhdr} % for the fancy headers and footers AFTER geometry package
 \RequirePackage{enumitem} % custom enumeration labels
 \RequirePackage{parskip} % block formatting
 \RequirePackage{titling} % \thetitle \theauthor
 \RequirePackage{anyfontsize} % \fontsize{<size>}{<skip>}
 \RequirePackage{sectsty} % format section headings \allsectionsfont 
-\RequirePackage{hyperref} % for hypertext links in the PDF; should be at end of all packages (see docs)
+\RequirePackage{hyperref} % for hypertext links in the PDF; should be at end of all packages
+
+%% defaults
+\renewcommand{\normalsize}{\fontsize{11.5}{14}\selectfont}
+\setlength{\textwidth}{6in}
+\setlength{\textheight}{8.5in}
+\setcounter{secnumdepth}{0}%% sample.cls
+\pagestyle{fancy}
+%% font: sans serif
+\renewcommand\sfdefault{phv}    % use Helvetica!
+\renewcommand{\familydefault}{\sfdefault}
+%
 
 % define policy name
-\DeclareOption{sec}{\newcommand\rb@policyname{Information Security} \newcommand\upperpolicyname{\uppercase{Information Security}}}
-\DeclareOption{use}{\newcommand\rb@policyname{Acceptable Use} \newcommand\upperpolicyname{\uppercase{Acceptable Use}}}
+\DeclareOption{sec}{\newcommand\rb@policyname{Information Security}
+	\newcommand\upperpolicyname{\uppercase{Information Security}}
+	\definecolor{barColor}{RGB}{212, 35, 50} % blood red
+	} 
+\DeclareOption{use}{\newcommand\rb@policyname{Acceptable Use} 
+	\newcommand\upperpolicyname{\uppercase{Acceptable Use}}
+	\definecolor{barColor}{RGB}{98, 184, 14} % grass green	
+	}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
 %% CUSTOM COLOURS
-\definecolor{blood}{RGB}{212, 35, 50} % for title
-\definecolor{grey}{RGB}{137, 160, 81} % for brackets
-\definecolor{slate}{RGB}{71, 116, 161} % for brackets
+\definecolor{grey}{RGB}{137, 160, 81} % greenish grey for brackets
+\definecolor{slate}{RGB}{71, 116, 161} % bluish grey for section headings
+
+% REBUILDING
 
 %% FIELDS
 % required fields for \maketitle: title, author
@@ -75,9 +96,9 @@
 	\renewcommand{\rb@vernum}{#1}
 	} 
 
-\newcommand{\rb@lastrevdate}{} % NEW ()CHANGED)
-\newcommand{\lastrevdate}[1]{
-	\renewcommand{\rb@lastrevdate}{#1} 
+\newcommand{\rb@lastverdate}{} % NEW ()CHANGED)
+\newcommand{\lastverdate}[1]{
+	\renewcommand{\rb@lastverdate}{#1} 
 }
 
 \newcommand{\rb@responsible}{} % default
@@ -90,26 +111,22 @@
 	\renewcommand{\rb@status}{#1}
 	} % [Draft], Under Review, Approved or Obsolete
 
-%% defaults
-\renewcommand{\normalsize}{\fontsize{12}{16}\selectfont}
-\setlength{\textwidth}{16.5cm}
-\setlength{\textheight}{22cm}
-\setcounter{secnumdepth}{0}%% sample.cls
-\pagestyle{fancy}
-%% font: sans serif
-\renewcommand\sfdefault{phv}    % use Helvetica!
-\renewcommand{\familydefault}{\sfdefault}
-%
-
 %% COMMON CONTENT
 
 %% Report headers & footers
-%\setlength\footheight{15pt}%
+\fancypagestyle{plain}{% plain
+	\fancyhf{} % clear all header and footer fields
+	\fancyhead[R]{\helv \@orgname} 
+	\fancyfoot[R]{\textbf{\helv Page \thepage}} % except page #
+%	\renewcommand{\headrulewidth}{0pt} % remove top line
+	\renewcommand{\footrulewidth}{0pt}
+	} % end plain
+
 \newcommand{\helv}{%
 	\fontfamily{phv}\fontsize{10}{11}\selectfont}
-\lhead{} \chead{} \rhead{}
-\lfoot{\helv \@orgname\ \@title, Version \rb@vernum}
-\cfoot{}
+\lhead{} \chead{} \rhead{\helv \@orgname}
+\lfoot{\helv \@title}
+\cfoot{\helv Version \rb@vernum}
 \rfoot{\helv Page \thepage}
 
 %% Sections
@@ -121,11 +138,11 @@
 
 %% Title Page
 \renewcommand{\maketitle}{%
-%	\thispagestyle{empty} % included in titlingpage 
-	\newgeometry{left=1.25in,top=1.25in,right=1.25in,bottom=1.25in}
+	\thispagestyle{empty}
+%	\newgeometry{left=1.25in,top=1.25in,right=1.25in,bottom=1.25in} % no change 
 	\begin{tabular}{ll}
-		\rowcolor{blood}  & \\ [5ex]
-		\rowcolor{blood} \hspace{50pt} & \color{white} {\fontsize{36}{20} \textbf{2017}} \\ 
+		\rowcolor{barColor}  & \\ [5ex]
+		\rowcolor{barColor} \hspace{50pt} & \color{white} {\fontsize{36}{20} \textbf{2017}} \\ 
 		\vspace{30pt} & \\
 		& \huge \color{grey}{\bfseries\@author} \\ [1.2ex]
 		& \color{grey}{Copyright \textcopyright 2017 Net Reaction, LLC}  \normalsize
@@ -136,7 +153,8 @@
 	{\fontsize{32}{20} \bfseries \selectfont \lgrey\uppercase{\upperpolicyname
 				
 		Policy}\rgrey} 
-
+	\clearpage
+%	\restoregeometry
 	} % end \maketitle
 
 % title brackets
@@ -146,7 +164,6 @@
 %% Document Information Page
 % title at top of page 1
 \newcommand{\titleline}{%
-	\vspace{-.5cm}
 	\Huge \color{slate}{\bfseries{\thetitle}} \color{black}\normalsize \normalfont
 	} % end \titleline
 
@@ -154,10 +171,10 @@
 \newcommand{\doctable}{%
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular*}{1.\textwidth}{ll@{\extracolsep{\fill}}ll}
-		\toprule
+%		\toprule
 		Policy Number: & \rb@policynum & Version: & \rb@vernum \\
 		Effective Date: & \rb@effectivedate & & \\
-		Last Revised Date: & \rb@lastrevdate & & \\
+		Last Updated: & \rb@lastverdate & & \\
 		Responsible Office: & \rb@responsible & & \\
 		Status: & \rb@status & & \\
 	\end{tabular*}

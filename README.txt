@@ -1,15 +1,25 @@
 README for policy class
-last updated 2017-05-03
+version 0.3
+last updated 2017-05-04
 Renee Boileau
 
 This LaTeX class creates the style elements needed for the Acceptable Use Policy and Information Security Policy documents.
 
 ______________________________________
+Breaking changes v0.2 to 0.3:
+______________________________________
+renamed field: \lastverdate was \lastrevdate
+
+other changes:
+ added table of contents
+ changed title colour by policy name
+
+______________________________________
 Included files:
 ______________________________________
 policy.cls: class file
-genUsePolicy.tex: master tex file for Acceptable Use Policy
-genSecPolicy.tex: master tex file for Information Security Policy
+masterUsePolicy.tex: master tex file for Acceptable Use Policy
+masterSecPolicy.tex: master tex file for Information Security Policy
 genPolicyHeader.tex: input file with generic field contents
 
 ______________________________________
