@@ -1,10 +1,111 @@
-% customized header file
-% replace all placeholder inputs like <<Status>>
+% sample Policy header file
 
-\orgname{Some Good Organization}
-\policynum{0020002} % assumed
-%\effectivedate{} % leave default
-\vernum{01} % assumed
-\lastverdate{May 4, 2017} % CHANGED
-\responsible{A. Jones}
-\status{Obsolete} % Draft, Under Review, Approved or Obsolete
+\orgname{Some Good Organization} % 
+\reldate{May 5, 2017} % NEW
+
+% Overview
+\chartfile{./graphics/chart.png} % filename with path
+\totRiskLevel{Medium} % Low, Medium, High
+\totRiskScore{61} % []0-100%]
+
+% Information Security Fundamentals table
+\fOne{Deficient} % Deficient, Passing
+\fTwo{Deficient}
+\fThree{Passing}
+\fFour{Passing}
+\fFive{Deficient}
+\fSix{Deficient}
+\fSeven{Passing}
+\fEight{Deficient}
+\fNine{Passing}
+\fTen{Passing}
+\fEleven{Passing}
+\fTwelve{Passing}
+\fThirteen{Passing}
+\fFourteen{Deficient}
+\fFifteen{Passing}
+
+% Focus Area 01 table
+\areaOneRiskLevel{Medium} % Low, Medium, High
+\areaOneScore{65} % [%] 0-100
+\areaOneRec{Consider formalizing your risk assessment framework.} % pipe-separated list
+
+% Focus Area 02 table
+\areaTwoRiskLevel{High}
+\areaTwoScore{33}
+\areaTwoRec{Adopt a formal Information Security Policy |
+	Adopt a formal Acceptable Use Policy
+	}%
+
+% Focus Area 03 table
+\areaThreeRiskLevel{High}
+\areaThreeScore{47}
+\areaThreeRec{Formalize  your individual pieces of a program into a formal Information Security Program |
+	Consider implementing a formal update schedule for your organizational policies |
+	Consider having an outside third party review your organization's Information Security posture on a periodic basis |
+	The methods that vendors and third parties use to protect your data are as important as the method and controls you use.  Assess your vendors' Information Security programs before conducting business |
+	Consider making the protection of your organization's information a part of your vendor contracts
+	}%
+
+% Focus Area 04 table
+\areaFourRiskLevel{High}
+\areaFourScore{5}
+\areaFourRec{Consider formalizing your Data Classification Guidelines |
+	Organizational assets and information should be clearly labeled and identified according to your Data Classification Guidelines
+	} %
+
+% Focus Area 05 table
+\areaFiveRiskLevel{tbd}
+\areaFiveScore{0}
+\areaFiveRec{tbd}
+
+% Focus Area 06 table
+\areaSixRiskLevel{tbd}
+\areaSixScore{0}
+\areaSixRec{tbd}
+
+% Focus Area 07 table
+\areaSevenRiskLevel{Medium}
+\areaSevenScore{74}
+\areaSevenRec{Careless disposal of information is a leading cause of data breaches.  Make sure that all media and information is securely destroyed before disposal or reuse |
+	Consider setting your antivirus solution to update and run at least once per week on your workstations. |
+	Consider implementing formal change control procedures to evaluate and if necessary roll back changes made to the organization's systems. |
+	Consider archiving audit logs for all user activity as appropriate.  Audit logs make both troubleshooting and investigations easier and less time consuming. |
+	Assign someone to review your audit logs on a periodic basis.  Many instances of fraud have been uncovered by a casual glance at log files. |
+	Test your backup media from time to time, especially if you are using cassette media.  Backup media has a finite lifespan and must be replaced periodically. |
+	Consider whether you really need sensitive personal information to be stored on laptop computers.  In cases where the answer is yes, continue with whole disk encryption. |
+	Consider whether or not business applications really require sensitive personal information to be collected via the web.  In cases where the answer is yes, ensure that you continue the use of appropriate encryption. |
+	Consider formally testing your websites for common vulnerabilities on a periodic basis. |
+	Consider whether or not your business really needs to store credit card information.  In cases where the answer is yes, continue the use of appropriate encryption.
+	} %
+
+% Focus Area 08 table
+\areaEightRiskLevel{tbd}
+\areaEightScore{0}
+\areaEightRec{tbd}
+
+% Focus Area 09 table
+\areaNineRiskLevel{tbd}
+\areaNineScore{0}
+\areaNineRec{tbd}
+
+% Focus Area 10 table
+\areaTenRiskLevel{tbd}
+\areaTenScore{0}
+\areaTenRec{tbd}
+
+% Focus Area 11 table
+\areaElevenRiskLevel{tbd}
+\areaElevenScore{0}
+\areaElevenRec{tbd}
+
+% Focus Area 12 table
+\areaTwelveRiskLevel{tbd}
+\areaTwelveScore{0}
+\areaTwelveRec{tbd}
+
+% Next Steps list
+\nextSteps{Stop to smell the roses. |
+	Call your mother. |
+	Do the next thing on your bucket list.
+	}

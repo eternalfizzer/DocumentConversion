@@ -2,16 +2,14 @@
 % initializes fields for Needs Assessment Report
 % generates title page, tables
 
-%% To Do:
-% debug list parser for recommendations
-
 %% QUESTIONS:
 % author? Net Reaction, LLC?
 % watch out for ampersands in inputs (use \& instead)
 % focus areas don't correspond to big table headings
+% content needs editing for parallel construction
 % are regs generic or specific to clients?
 
-\def\fileversion{0.1} % draft version
+\def\fileversion{0.2} % draft version (listparser fixed)
 \def\filedate{2017/05/05}
 \typeout{%
 	Document Class: needs \filedate \space v\fileversion \space (R. Boileau)}
@@ -42,10 +40,10 @@
 % create a bullet list from a delimited string
 \DeclareListParser{\MyListParser}{|} % set pipe symbol as delimiter
 \newcommand{\buildList}[1]{%
-	\begin{itemize}
-		\renewcommand*{\do}[1]{\item #1}%
-		\MyListParser{#1}%
-	\end{itemize}
+	\begin{checklist}
+		\renewcommand*{\do}[1]{\item ##1}%
+		\expandafter\MyListParser\expandafter{#1}%
+	\end{checklist}
 }
 
 \graphicspath{{./graphics/}}
@@ -71,7 +69,8 @@
 \newcommand\upperdocname{\uppercase{Needs Assessment}}
 
 \title{Needs Assessment Report}
-\author{Net Reaction, LLC} % CHECK
+\author{Net~Reaction, LLC} % CHECK
+\renewcommand{\theauthor}{\color{red}\itshape Net~Reaction \normalfont \color{black}}
 
 % release date
 \newcommand{\@reldate}{\emph to be determined} % NEW ()CHANGED)
@@ -379,8 +378,6 @@
 
 %% COMMON CONTENT
 
-\renewcommand{\theauthor}{\color{red}\itshape Net Reaction \normalfont \color{black}}
-
 %% Report headers & footers
 %\setlength\footheight{15pt}%
 \newcommand{\helv}{%
@@ -409,7 +406,7 @@
 	\begin{tabular}{r}
 %		\rowcolor{red}  \\ [5ex]
 		\includegraphics[width = 0.8\textwidth]{logo}\\ 
-		 \huge \color{blue}{for \bfseries\itshape\@orgname} \\ [1.2ex]
+		 \huge \color{slate}{for \bfseries\itshape\@orgname} \\ [1.2ex]
 	\end{tabular}
 	\vspace{3cm}
 	
@@ -456,7 +453,7 @@
 \newcommand{\infoTable}{%
 	\bgroup
 	\def\arraystretch{1.2}
-		\begin{longtable}{lp{0.8\textwidth}l}
+		\begin{longtable}{lp{0.75\textwidth}c}
 			\toprule
 			& \emph{Area} &  \emph{Your Rating}\\
 			\midrule \endhead
@@ -512,160 +509,182 @@
 %		\input{bigtable}
 	}% end \infoTable
 
+\newcommand\tableStart{ \vspace{20pt} \hrulefill \vspace{7pt}
+	}
+\newcommand\tableEnd{ \hrulefill
+	}
 % Focus Area tables
-\newcommand{\fOneTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaOneRiskLevel \\
-		Your Score: & \@areaOneScore\% \\
-		Recommendations: & \buildList{\@areaOneRec}\\
-		\bottomrule
-	\end{tabular}
+\newcommand{\fOneTable}{%
+%	\begin{tabular}{l} %{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
+%		\toprule
+%		Risk Level: & \@areaOneRiskLevel \\
+%		Your Score: & \@areaOneScore\% \\
+%		Our Recommendations: & \buildList{\@areaOneRec}\\
+%	\end{itemize}
+%	\end{tabular}
+%	\begin{tabular}{l}
+%		\toprule
+%		\buildList{\@areaOneRec} 
+%		\bottomrule
+%	\end{tabular}
+	\tableStart
+    	\begin{description}
+    		\item [Risk Level:]  \@areaOneRiskLevel 
+    		\item [Your Score:] \@areaOneScore\% 
+    		\item [Our Recommendations:] 	
+    	\end{description}
+		\buildList{\@areaOneRec} 
+	\tableEnd
 	}% end\fOneTable
 
 \newcommand{\fTwoTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}l}
-		\toprule
-		Risk Level: & \@areaTwoRiskLevel \\
-		Your Score: & \@areaTwoScore\% \\
-%		Recommendations: & \buildList{\@areaTwoRec}\\
-		\bottomrule
-	\end{tabular}
-}% end\fTwoTable
+	\tableStart
+    	\begin{description}
+    		\item [Risk Level:]  \@areaTwoRiskLevel 
+    		\item [Your Score:] \@areaTwoScore\% 
+    		\item [Our Recommendations:] 			
+		\end{description}
+	\buildList{\@areaTwoRec} 
+	\tableEnd
+	}% end\fTwoTable
 
 \newcommand{\fThreeTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaThreeRiskLevel \\
-		Your Score: & \@areaThreeScore\% \\
-		Recommendations: & \buildList{\@areaThreeRec} \\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaThreeRiskLevel 
+		\item [Your Score:] \@areaThreeScore\% 
+		\item [Our Recommendations:] 			
+	\end{description}
+	\buildList{\@areaThreeRec} 
+	\tableEnd
 }% end\fThreeTable
 
 \newcommand{\fFourTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaFourRiskLevel \\
-		Your Score: & \@areaFourScore\% \\
-		Recommendations: & \buildList{\@areaFourRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaFourRiskLevel 
+		\item [Your Score:] \@areaFourScore\% 
+		\item [Our Recommendations:] 			
+	\end{description}
+	\buildList{\@areaFourRec} 
+	\tableEnd
 }% end\fFourTable
 
 \newcommand{\fFiveTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaFiveRiskLevel \\
-		Your Score: & \@areaFiveScore\% \\
-		Recommendations: & \buildList{\@areaFiveRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaFiveRiskLevel 
+		\item [Your Score:] \@areaFiveScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaFiveRec} 
+	\tableEnd
 }% end\fFiveTable
 
 \newcommand{\fSixTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaSixRiskLevel \\
-		Your Score: & \@areaSixScore\% \\
-		Recommendations: & \buildList{\@areaSixRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaSixRiskLevel 
+		\item [Your Score:] \@areaSixScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaSixRec} 
+	\tableEnd
 }% end\fSixTable
 
 \newcommand{\fSevenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaSevenRiskLevel \\
-		Your Score: & \@areaSevenScore\% \\
-		Recommendations: & \buildList{\@areaSevenRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaSevenRiskLevel 
+		\item [Your Score:] \@areaSevenScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaSevenRec} 
+	\tableEnd
 }% end\fSevenTable
 
 \newcommand{\fEightTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaEightRiskLevel \\
-		Your Score: & \@areaEightScore\% \\
-		Recommendations: & \buildList{\@areaEightRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaEightRiskLevel 
+		\item [Your Score:] \@areaEightScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaEightRec} 
+	\tableEnd
 }% end\fEightTable
 
 \newcommand{\fNineTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaNineRiskLevel \\
-		Your Score: & \@areaNineScore\% \\
-		Recommendations: & \buildList{\@areaNineRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaNineRiskLevel 
+		\item [Your Score:] \@areaNineScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaNineRec} 
+	\tableEnd
 }% end\fNineTable
 
 \newcommand{\fTenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaTenRiskLevel \\
-		Your Score: & \@areaTenScore\% \\
-		Recommendations: & \buildList{\@areaTenRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaTenRiskLevel 
+		\item [Your Score:] \@areaTenScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaTenRec} 
+	\tableEnd
 }% end\fTenTable
 
 \newcommand{\fElevenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaElevenRiskLevel \\
-		Your Score: & \@areaElevenScore\% \\
-		Recommendations: & \buildList{\@areaElevenRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaElevenRiskLevel 
+		\item [Your Score:] \@areaElevenScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaElevenRec} 
+	\tableEnd
 }% end\fElevenTable
 
 \newcommand{\fTwelveTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaTwelveRiskLevel \\
-		Your Score: & \@areaTwelveScore\% \\
-		Recommendations: & \buildList{\@areaTwelveRec}\\
-		\bottomrule
-	\end{tabular}
+	\tableStart
+	\begin{description}
+		\item [Risk Level:]  \@areaTwelveRiskLevel 
+		\item [Your Score:] \@areaTwelveScore\% 
+		\item [Our Recommendations:] 	
+	\end{description}
+	\buildList{\@areaTwelveRec} 
+	\tableEnd
 }% end\fTwelveTable
 
-\newcommand{\fThirteenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaThirteenRiskLevel \\
-		Your Score: & \@areaThirteenScore\% \\
-		Recommendations: & \buildList{\@areaThirteenRec}\\
-		\bottomrule
-	\end{tabular}
-}% end\fThirteenTable
-
-\newcommand{\fFourteenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaFourteenRiskLevel \\
-		Your Score: & \@areaFourteenScore\% \\
-		Recommendations: & \buildList{\@areaFourteenRec}\\
-		\bottomrule
-	\end{tabular}
-}% end\fFourteenTable
-
-\newcommand{\fFifteenTable}{
-	\begin{tabular}{>{\bfseries}r>{\normalfont}p{0.7\textwidth}}
-		\toprule
-		Risk Level: & \@areaFifteenRiskLevel \\
-		Your Score: & \@areaFifteenScore\% \\
-		Recommendations: & \buildList{\@areaFifteenRec}\\
-		\bottomrule
-	\end{tabular}
-}% end\fFifteenTable
+%% UNUSED TABLES
+%\newcommand{\fThirteenTable}{
+%}% end\fThirteenTable
+%
+%\newcommand{\fFourteenTable}{
+%}% end\fFourteenTable
+%
+%\newcommand{\fFifteenTable}{
+%}% end\fFifteenTable
 
 \newcommand{\listSteps}{%
-	\buildList{\@nextSteps}
+%	\begin{itemize}
+%		\renewcommand*{\do}[1]{\item #1}%
+%		\expandafter\MyListParser\expandafter{\@nextSteps}%
+%	\end{itemize}
+    	\begin{description}
+    		\item [Risk Level:]  \@areaOneRiskLevel 
+    		\item [Your Score:] \@areaOneScore\% 
+    		\item [Our Recommendations:] 	\begin{itemize}
+    %			\renewcommand*{\do}[1]{\item #1}%
+    %			\expandafter\MyListParser\expandafter{\@areaOneRec}%
+    			\item test
+    			\end{itemize}
+    	\end{description}
 	}
+%	\expandafter\buildList\expandafter{\@nextSteps}
+
 
 %% Document table
 %\newcommand{\fw}{{\extracolsep{\fill}}}

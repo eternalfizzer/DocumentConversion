@@ -5,6 +5,12 @@ Renee Boileau
 This LaTeX class creates the style elements needed for the Needs Assessment Report document.
 
 ______________________________________
+Changes v01 > v02
+______________________________________
+- fixed Recommendations list parsing
+- last page content added
+
+______________________________________
 Included files:
 ______________________________________
 needs.cls: class file
